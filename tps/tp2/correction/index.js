@@ -42,15 +42,15 @@ app.get('/paris', async (req, res) => {
 
 // Ajout d'un pari avec SQLite
 app.post('/paris', async (req, res) => {
-    const { author, cheval } = req.body;
+    const { auteur, cheval } = req.body;
 
-    // const author = req.body.author;
+    // const auteur = req.body.auteur;
     // const horse = req.body.horse;
 
     const sqlQuery = 'INSERT INTO paris VALUES(?, ?, DATETIME(\'now\', \'localtime\'))';
 
     try {
-        await db.run(sqlQuery, [author, cheval]);
+        await db.run(sqlQuery, [auteur, cheval]);
 
         return res.status(201).send('Pari créé');
     } catch (err) {
@@ -65,7 +65,7 @@ app.post('/paris/generate', async (req, res) => {
 
     const NB_VALUES = 10;
     for (let i = 0; i < NB_VALUES; i++) {
-        const author = faker.name.firstName();
+        const auteur = faker.name.firstName();
         const horse = faker.random.number({ min: 1, max: 10 });
 
         sqlQuery += '(?, ?, DATETIME(\'now\', \'localtime\'))';
@@ -74,7 +74,7 @@ app.post('/paris/generate', async (req, res) => {
         } else {
             sqlQuery += ';';
         }
-        values.push(author, horse);
+        values.push(auteur, horse);
     }
 
     try {
@@ -110,7 +110,7 @@ async function initDatabase() {
 
     // Initialisation de la table paris
     await db.exec('DROP TABLE IF EXISTS paris');
-    await db.exec('CREATE TABLE paris(author TEXT, horse INTEGER, date TEXT)');
+    await db.exec('CREATE TABLE paris(auteur TEXT, horse INTEGER, date TEXT)');
     console.log('Table paris créée');
 
     console.log('Base de donnée initialisée');
