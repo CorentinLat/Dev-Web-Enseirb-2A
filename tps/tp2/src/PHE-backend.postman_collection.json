@@ -74,7 +74,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n        \"author\": \"Georges\",\n        \"cheval\": 4\n    }"
+					"raw": "{\n        \"auteur\": \"Georges\",\n        \"cheval\": 4\n    }"
 				},
 				"url": {
 					"raw": "http://localhost:3000/paris",

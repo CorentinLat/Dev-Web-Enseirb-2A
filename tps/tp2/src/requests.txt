@@ -1,0 +1,14 @@
+Requête pour récupérer les paris
+curl --location 'http://localhost:3000/paris' --header 'Content-Type: application/json'
+
+Requête pour créer un pari
+curl --location 'http://localhost:3000/paris' \
+--header 'Content-Type: application/json' \
+--data '{ "auteur": "Georges", "cheval": 4 }'
+
+Requête pour générer plusieurs paris
+curl --location --request POST 'http://localhost:3000/paris/generate' \
+--header 'Content-Type: application/json'
+
+Requête pour supprimer un pari
+curl --location --request DELETE 'http://localhost:3000/paris/1'
