@@ -138,6 +138,6 @@ app.post('/login', async (req, res) => {
 
 
 /* Démarrage serveur */
-app.listen(3000, () => {
+const server = app.listen(3000, () => {
     console.log('Serveur phe-backend démarré !');
 });
