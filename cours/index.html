@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Cours Web</title>
+
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/solarized.css">
+
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<!--  Cours 1  -->
+				<section data-background-image="img/introduction.gif" data-background-opacity="0.2">
+					<h1 class="r-fit-text">Cours Web</h1>
+					<p>
+						<small>Created by
+							<strong>Corentin LATAPPY</strong>
+						</small>
+					</p>
+					<p>
+						<small>Inspired by
+							<strong>Cyril BESLAY</strong>
+						</small>
+					</p>
+				</section>
+				<section>
+					<h2>Qui suis-je ?</h2>
+					<ul class="r-fit-text">
+						<li>Corentin Latappy</li>
+						<li>Post-Doctorant au <a href="https://www.labri.fr" target="_blank">LaBRI</a></li>
+						<li>Dev full-stack en JS & TS</li>
+						<li><a href="mailto:corentin.latappy@labri.fr">corentin.latappy@labri.fr</a></li>
+					</ul>
+				</section>
+				<section>
+					<h2>Plan du cours</h2>
+					<ul class="r-fit-text">
+						<li>Cours 1 : Introduction et bases de JavaScript</li>
+						<li>Cours 2 : Développement côté serveur avec Express</li>
+						<li>Cours 3 : Développement côté client avec VueJS</li>
+						<li>Cours 4 : Composants et Routeur</li>
+						<li>Cours 5 : Socket.io</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Plan des TPs</h2>
+					<ul class="r-fit-text">
+						<li>TP 1 : Site Web Météo dynamique</li>
+						<li>TP 2 : PHE - Partie Serveur</li>
+						<li>TP 3 : PHE - Partie Client</li>
+						<li>TP 4 : PHE - Composants et Routes</li>
+						<li>TP 5 : PHE - Communication et Refactoring</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Accès aux Supports</h2>
+					<a href="https://github.com/CorentinLat/Dev-Web-Enseirb-2A" target="_blank">https://github.com/CorentinLat/Dev-Web-Enseirb-2A</a>
+				</section>
+				<section>
+					<section>
+						<h2>Pourquoi JavaScript ?</h2>
+					</section>
+					<section>
+						<p>Langage très utilisé et en forte progression</p>
+						<img class="r-stretch" src="img/stackoverflow_survey.png" alt="SO survey"/>
+						<a href="https://survey.stackoverflow.co/2023/#section-most-popular-technologies-programming-scripting-and-markup-languages" target="_blank">https://survey.stackoverflow.co/2023</a>
+					</section>
+					<section>
+						<p>Langage Full Stack</p>
+						<section class="r-hstack">
+							<img src="img/javascript_full_stack.jpg" />
+							<ul>
+								<li>Frontend</li>
+								<li>Serveur</li>
+								<li>Mobile</li>
+								<li>Jeu</li>
+							</ul>
+						</section>
+					</section>
+					<section>
+						<h3>Internet sans Javascript</h3>
+						<img src="img/facebook_without_javascript.png" />
+						<img src="img/google_mail_without_javascript.png" />
+						<img src="img/google_maps_without_javascript.png" />
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Écosystème</h2>
+					</section>
+					<section>
+						<h2>Le language JavaScript</h2>
+						<pre><code>
+		// Set variables
+		let myBankBalance = 0;
+		let output = "";
+
+		// Do the 'for' loop
+		for (myBankBalance = 0; myBankBalance <= 3; myBankBalance++) {
+			if  (myBankBalance === 1) {
+				continue;
+			}
+			output += "My bank balance is now $" + myBankBalance + "<br>";
+		}
+
+		// Output results to the above HTML element
+		document.getElementById("msg").innerHTML = output;
+							</code></pre>
+					</section>
+					<section>
+						<h2>EcmaScript</h2>
+						<ul>
+							<li><strong>Standard</strong> international qui définit JavaScript</li>
+							<li>Apporte de nouvelles fonctionnalités</li>
+							<li>Non compatible avec tous les navigateurs</li>
+							<li>ES5, ES6, ES2017, ...</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Frameworks</h2>
+						<ul>
+							<li>Bibliothèques qui permettent de faciliter le développement, donner un cadre et des outils</li>
+							<li>Beaucoup de frameworks disponibles</li>
+							<li>Environnement évoluant très vite</li>
+							<li>3 acteurs majeurs : Angular, React, Vue.js</li>
+						</ul>
+					</section>
+					<section>
+						<img src="img/framework_commit_strip_1.png" />
+					</section>
+					<section>
+						<img src="img/framework_commit_strip_2.png" />
+					</section>
+					<section>
+						<h2>Backend</h2>
+						<p>Aujourd'hui, JavaScript n'est pas seulement utilisé dans le web mais aussi
+							pour des applications lourdes (Discord, WhatsApp Desktop, ...) et pour des serveurs.
+						</p>
+						<p>Même syntaxe, mais librairies et concepts différents.</p>
+					</section>
+					<section>
+						<h2>Outils</h2>
+						<ul>
+							<li>Navigateur (Chrome, Firefox, ...)</li>
+							<li>Editeur (WebStorm, VSCode, Atom, ...)</li>
+							<li>Terminal</li>
+							<li>Node Package Manager - NPM</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Language JavaScript</h2>
+					</section>
+					<section>
+						<h2>Où développer ?</h2>
+						<ul>
+							<li>Console Chrome</li>
+							<li>Page web HTML</li>
+							<li>Serveur NodeJS</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Les normes d'écriture</h3>
+						<img src="img/tabs_spaces.gif" alt="">
+						<p>L'idée de base est que "les développeurs d'un même projet codent de la même manière".</p>
+						<p>Pour ce cours et les TPs, ça n'a pas d'importance. Restez constants.</p>
+					</section>
+					<section>
+						<h3>Language interprété</h3>
+						<ul>
+							<li>Pas de compilation.</li>
+							<li>Chaque marque a son moteur (Microsoft, Google, Apple, Mozilla).</li>
+							<li>Language visible dans le navigateur (exemple).</li>
+							<li>Scripts exécutés chez le client.</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Hello World !</h3>
+						<pre class="javascript">
+								<code>
+		alert('Hello World !');
+								</code>
+							</pre>
+					</section>
+					<section>
+						<h3>Variables</h3>
+						<ul>
+							<li>let</li>
+							<li>const</li>
+							<li>(var)</li>
+							<li>camelCase</li>
+						</ul>
+						<pre class="javascript">
+									<code>
+		var messageToSend = 'Hello World !';
+		let author = 'Cyril';
+		const country = 'FR';
+		author = 'Corentin';
+		alert(messageToSend);
+									</code>
+							</pre>
+					</section>
+					<section>
+						<h3>Typage dynamique</h3>
+						<ul>
+							<li>Une variable peut contenir <strong>tout type de donnée</strong>.</li>
+							<li>Le type de donnée dans une variable peut changer au cours du temps.</li>
+						</ul>
+						<pre class="javascript">
+								<code>
+		let studentNumber = 150;
+		console.log(studentNumber);
+		studentNumber = '150';
+		console.log(studentNumber);
+								</code>
+							</pre>
+					</section>
+					<section>
+						<ul>
+							<li>undefined : Variable non définie</li>
+							<li>null : Valeur inconnue</li>
+						</ul>
+						<pre class="javascript">
+									<code>
+		let studentNumber;
+		console.log(studentNumber); // undefined
+		studentNumber = null;
+		console.log(studentNumber); // null
+									</code>
+								</pre>
+					</section>
+					<section>
+						<p><b>type of</b> pour connaître le type d'une variable</p>
+						<pre class="javascript">
+								<code>
+		typeof undefined // "undefined"
+		typeof 0 // "number"
+		typeof true // "boolean"
+		typeof "foo" // "string"
+		typeof {'foo' : 'fact'} // "object"
+		typeof null // "object"
+		typeof alert // "function
+								</code>
+							</pre>
+					</section>
+					<section>
+						<h3>Comparaisons</h3>
+						<p>Attention au type</p>
+						<pre class="javascript">
+									<code>
+		let studentNumber = 150;
+		let studentNumberExpected = '150';
+		studentNumber == studentNumberExpected // true
+		studentNumber === studentNumberExpected // false
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h3>Conditions</h3>
+						<p>if</p>
+						<pre class="javascript">
+									<code>
+		const year = prompt('In which year was ECMAScript-2015 specification published?', '');
+
+		if (year == 2015) {
+			alert('You guessed it right!');
+		} else {
+			alert('How can you be so wrong?');
+		}
+									</code>
+								</pre>
+					</section>
+					<section>
+						<p>switch</p>
+						<pre>
+									<code>const a = 2 + 2;
+
+		switch (a) {
+			case 3:
+				alert('Too small');
+				break;
+			case 4:
+				alert('Exactly!');
+				break;
+			case 5:
+				alert('Too large');
+				break;
+			default:
+				alert("I don't know such values");
+		}</code>
+								</pre>
+					</section>
+					<section>
+						<h3>Boucles</h3>
+						<ul>
+							<li>for</li>
+							<li>while (do while)</li>
+							<li>break</li>
+							<li>continue</li>
+						</ul>
+					</section>
+					<section>
+								<pre class="javascript">
+									<code>
+		for (let i = 0; i < fruits.length; i++) {
+			if (fruits[i] === 'Banana') {
+				continue;
+			}
+			console.log(fruits[i]);
+		}
+
+		while (i < 10) {
+			console.log('The number is ' + i);
+			i++;
+			if (i > 7) {
+				break;
+			}
+		}
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h3>Fonctions</h3>
+						<pre class="javascript">
+									<code>
+		function checkAge(age, legalAge = 18) {
+			if (age >= legalAge) {
+				return true;
+			} else {
+				return 'Got a permission from the parents ?';
+			}
+		}
+
+		let response = checkAge(19);
+		console.log(response); // true
+		response = checkAge(19, 21);
+		console.log(response); // false
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h3>Deux syntaxes</h3>
+						<pre class="javascript">
+									<code>
+		// Function classique
+		function checkAge(age, legalAge = 18) {
+			return age >= legalAge;
+		}
+
+		// Function arrow
+		const checkAge = (age, legalAge = 18) => (age >= legalAge);
+
+		const cities = data.filter(city => (city.population > 500000));
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h3>Tableaux</h3>
+						<ul>
+							<li>Facile à manipuler</li>
+							<li>Nombreuses fonctionnalités portées par l'objet (length, push, pop, shift)</li>
+							<li>Parcours de 0 à length - 1</li>
+						</ul>
+					</section>
+					<section>
+								<pre class="javascript">
+									<code>
+		let fruits = ['Apple', 'Orange', 'Pear'];
+
+		for (let i = 0; i < fruits.length; i++) {
+			console.log(fruits[i]);
+		}
+
+		fruits.push('Citron');
+
+		console.log(fruits); // ['Apple', 'Orange', 'Pear', 'Citron']
+		console.log(fruits.length); // 4
+
+		console.log(fruits.shift()); // 'Apple'
+		console.log(fruits); // ['Orange', 'Pear', 'Citron']
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h3>Manipulation de Tableaux</h3>
+						<p>forEach</p>
+						<pre class="javascript">
+									<code>
+		const fruits = ['Apple', 'Orange', 'Pear'];
+
+		fruits.forEach(fruit => console.log(fruit)); // Apple, Orange, Pear
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h3>Manipulation de Tableaux</h3>
+						<p>map</p>
+						<pre class="javascript">
+									<code>
+		const numbers = [0, 1, 2, 3];
+
+		const squares = numbers.map(number => number * number);
+		console.log(squares); // [0, 1, 4, 9]
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h3>Manipulation de Tableaux</h3>
+						<p>filter</p>
+						<pre class="javascript">
+									<code>
+		const numbers = [0, 1, 2, 3, 4, 5];
+
+		const evens = numbers.filter(number => number % 2 === 0);
+		console.log(evens); // [0, 2, 4]
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h3>Objets</h3>
+						<p>Un objet est un type complexe capable de stocker plusieurs informations.</p>
+						<p>L'objet a un ensemble de clés/valeurs appelé propriétés.</p>
+						<p>L'accès à une propriété se fait via <code>objet.property</code> ou <code>objet['property']</code>.</p>
+					</section>
+					<section>
+						Attention, les objets sont des références et non des valeurs.
+						<pre class="javascript">
+									<code>
+		const student = { name: 'Clark', age: 23 };
+		const admin = student; // copy the reference
+
+		console.log(student.name); // 'Clark'
+		admin.name = 'Superman';
+		console.log(student.name); // 'Superman'
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h3>This</h3>
+						<pre class="javascript">
+									<code>
+		const user = {
+			name: 'John',
+			age: 30,
+			sayHello() {
+				return 'Je suis ' + this.name + ' et j\'ai ' + this.age + ' ans.';
+			}
+		};
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h3>Échange Client-Serveur</h3>
+						<img src="img/client-serveur.png" alt="">
+					</section>
+					<section>
+						<h3>HyperText Transfert Protocol</h3>
+						<p>HTTP est un <strong>protocole de communication</strong> client-serveur développé pour le web.</p>
+						<p>GET, POST, PUT, DELETE sont des <strong>verbes</strong> HTTP</p>
+					</section>
+					<section>
+						<h3>Comment appeler un serveur ?</h3>
+						<p>2 méthodes : </p>
+						<ul>
+							<li>XMLHttpRequest</li>
+							<li>fetch (ES6)</li>
+						</ul>
+					</section>
+					<section>
+						<h4>XMLHttpRequest</h4>
+						<pre><code>
+		const req = new XMLHttpRequest();
+		req.open('GET', url);
+		req.send();
+							</code></pre>
+					</section>
+					<section>
+						<h4>Fetch</h4>
+						<pre class="javascript"><code>
+		fetch(url)
+			.then(() => {
+				// Do something
+			});
+								</code></pre>
+					</section>
+					<section>
+						<h3>JSON</h3>
+						<p>Format d'échange de données structurées</p>
+						<pre><code>
+		{
+			"book": {
+				"title": "Moby Dick",
+				"author": "Herman Melville",
+				"reviews": [
+					{"reviewer": "Mark234", "rating_stars": "4.5"},
+					{"reviewer": "Frank12", "rating_stars": "3.5"},
+					{"reviewer": "NotPatrick", "rating_stars": "4"}
+				]
+			}
+		}
+							</code></pre>
+					</section>
+					<section>
+						<h3>Promise</h3>
+						Une promesse représente une valeur qui peut être disponible maintenant, plus tard ou jamais.
+						<img src="img/mind_blowing.gif" alt="">
+					</section>
+					<section>
+							<pre><code>
+		const promise = new Promise((resolve, reject) => {
+			setTimeout(function() {
+				resolve();
+			}, 300);
+		});
+
+		promise.then(() => console.log('arrivé 2ème :('));
+
+		console.log('arrivé 1er :)');
+							</code></pre>
+					</section>
+					<section>
+						<h3>Promise</h3>
+						<p>Beaucoup de fonctions travaillent en asynchrone, donc avec un système de promesse.</p>
+						<p>Exemples de fonctions I/O :</p>
+						<ul>
+							<li>fetch (HTTP)</li>
+							<li>fs (filesystem)</li>
+							<li>database querying</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Chainer les promesses</h4>
+						<pre><code>
+		fetch('./file.json')
+			.then(response => response.json())
+			.then(data => console.log(data))
+							</code></pre>
+					</section>
+					<section>
+						<h3>Async / Await</h3>
+						<p>Introduit depuis ES8</p>
+						<p>Même résultat que les promesses mais plus lisible</p>
+					</section>
+					<section>
+						<h3>Async / Await</h3>
+						<pre><code>
+		const response = await fetch('./file.json');
+		const data = await response.json();
+		console.log(data);
+							</code></pre>
+					</section>
+					<section>
+						<h3>Ressources externes</h3>
+						<p><a href="https://javascript.info/" target="_blank">https://javascript.info/</a></p>
+						<p><a href="https://www.learn-js.org/" target="_blank">https://www.learn-js.org/</a></p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>ECMAScript</h2>
+					</section>
+					<section>
+						<h3>EcmaScript 5, 6, 7, 8...</h3>
+						<p>EcmaScript définit les standards et nouveautés de développement</p>
+						<p>Problème : les navigateurs et moteurs JavaScript mettent du temps à s'adapter</p>
+						<p>Une notion de compatibilité entre en jeu</p>
+					</section>
+					<section>
+						<h3>ECMAScript Compatibilité</h3>
+						<p>Tableau de compatibilité des différents navigateurs et moteurs</p>
+						<a href="https://kangax.github.io/compat-table/es2016plus/" target="_blank">Tableau de Compatibilité</a>
+					</section>
+					<section>
+						<h3>ES5</h3>
+						<ul>
+							<li>Fonctions Array forEach, map, filter</li>
+							<li>JSON.parse() et JSON.stringify()</li>
+							<li>getters et setters sur les objets</li>
+						</ul>
+						<aside class="notes">
+							list.forEach((element) => console.log(element));
+							list.map((x) => x +1).filter((x) => x > 3);
+						</aside>
+					</section>
+					<section>
+						<h3>ES2015 (ES6)</h3>
+						<ul>
+							<li>Paramètre par defaut</li>
+							<li>String literals</li>
+							<li>Arrow functions</li>
+							<li>Promise</li>
+							<li>Const and Let</li>
+							<li>Classes and super</li>
+						</ul>
+						<aside class="notes">
+							const myString = 'Hello' + newName;
+							const myString = `Hello ${newName}`;
+						</aside>
+					</section>
+					<section>
+						<h3>ES2023 (ES14)</h3>
+						<p>Pas encore stable, pas encore compatible</p>
+						<p>Ne partez pas trop tôt</p>
+						<img src="img/fail_start.gif" alt="">
+					</section>
+					<section>
+						<h3>Babel & Webpack</h3>
+						<p>Comment faire pour utiliser ES6/ES7 en s'assurant d'être <strong>compatible</strong> avec le plus grand nombre
+							?</p>
+						<p>La <strong>transpilation</strong> permet de tranformer du code "nouveau" en code "ancien".</p>
+						<p>Dans notre cas, ECMAScript vers JavaScript.</p>
+						<p>Il est donc possible d'écrire du code avec des fonctionnalités modernes tout en restant compatible avec tous
+							les navigateurs.</p>
+					</section>
+					<section>
+						<h3>Babel JS</h3>
+						<p>Un outil de transpilation majoritairement utilisé</p>
+						<img src="img/babel.gif" alt="">
+					</section>
+					<section>
+						<h3>WebPack</h3>
+						<p>Outil qui permet :</p>
+						<ul>
+							<li>d'executer des transformations sur des fichiers</li>
+							<li>d'agréger des fichiers</li>
+							<li>une grande configuration/personnalisation</li>
+						</ul>
+					</section>
+					<section>
+						<img src="img/webpack_schema.jpg" alt="">
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+			});
+		</script>
+	</body>
+</html>
