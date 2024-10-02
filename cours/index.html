@@ -636,6 +636,107 @@
 						<img src="img/webpack_schema.jpg" alt="">
 					</section>
 				</section>
+
+				<!--  Cours 2  -->
+				<section>
+					<section>
+						<h2>Node JS et ExpressJS</h2>
+					</section>
+					<section>
+						<h3>NodeJS</h3>
+						<p>Environnement d'éxécution de JavaScript côté serveur</p>
+						<p>Basé sur le moteur <strong>V8</strong></p>
+						<p>Version Long Time Supported : 20</p>
+						<img src="img/node_js.png" alt="">
+					</section>
+					<section>
+						<h3>Node Package Manager</h3>
+						<p>Gestionnaire de paquets officiel de NodeJS</p>
+						<p>Permet l'installation et la gestion de dépendances (librairies) pour un projet</p>
+						<img src="img/npm.png" alt="">
+					</section>
+					<section>
+						<h3>Node Package Manager</h3>
+						<p>La configuration se fait via un fichier <strong>package.json</strong></p>
+						<pre><code>
+		{
+			"name": "phe-backend",
+			"version": "1.0.0",
+			...
+			"dependencies": {
+				"express": "^4.17.1",
+				"sqlite3": "^5.1.6"
+			},
+			"devDependencies": {
+				"nodemon": "^3.0.1"
+			}
+		}
+								</code></pre>
+					</section>
+					<section>
+						<h3>Node Package Manager</h3>
+						<p>
+							Deux commande principales :
+						<ul>
+							<li><code>npm i (npm install)</code></li>
+							<li><code>npm i paquet</code></li>
+						</ul>
+						</p>
+					</section>
+					<section>
+						<h3>ExpressJS</h3>
+						<p>Bibliothèque légère pour développer des applications NodeJS</p>
+						<p>Gestion des routes pour une API HTTP</p>
+					</section>
+					<section>
+						<h3>ExpressJS</h3>
+						<pre><code>
+		import express from 'express';
+
+		const app = express();
+
+		app.get('/', function(req, res) {
+			res.send('Bienvenue');
+		});
+
+		app.listen(8080);
+							</code></pre>
+					</section>
+					<section>
+						<h3>ExpressJS</h3>
+						<pre><code>
+		app.get('/hello/:name', function(req, res) {
+			const name = req.params.name;
+			res.send('Bienvenue ' + name);
+		});
+							</code></pre>
+					</section>
+					<section>
+						<h3>Notion de Module</h3>
+						<p>Pour mieux structurer notre code, nous avons besoin de le séparer en plusieurs fichiers.</p>
+						<p>Nous pouvons importer des modules internes ET externes</p>
+					</section>
+					<section>
+							<pre><code>
+		import http from 'http'; // import externe (coeur node)
+		import express from 'express'; // import librairie externe (node_modules)
+		import utils from './utils'; // import interne (dossier utils)
+							</code></pre>
+					</section>
+					<section>
+							<pre><code>
+		export function dateFrancais() {
+			return new Date().toLocaleDateString('fr-FR');
+		}
+							</code></pre>
+					</section>
+					<section>
+							<pre><code>
+		import dateModule from './dateModule';
+		console.log(dateModule.dateFrancais());
+							</code></pre>
+					</section>
+				</section>
 			</div>
 		</div>
 
