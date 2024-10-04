@@ -737,6 +737,348 @@
 							</code></pre>
 					</section>
 				</section>
+
+				<!--  Cours 3  -->
+				<section>
+					<section>
+						<h2>Frameworks JavaScript</h2>
+					</section>
+					<section>
+						<h3>Pourquoi utiliser un Framework ?</h3>
+						<ul>
+							<li>Cadre de développement</li>
+							<li>Développement plus rapide</li>
+							<li>Structuration du code et réutilisation</li>
+							<li>Faciliter la manipulation du DOM</li>
+						</ul>
+						<blockquote>
+							N'utilisez pas un framework JavaScript pour développer une simple page.
+						</blockquote>
+					</section>
+					<section>
+						<h3>Single Page App</h3>
+						<p>Principe : éviter le chargement d'une nouvelle page à chaque action afin de
+							<strong>fluidifier</strong> l'expérience utilisateur</p>
+						<p>Optimisation nombre d'appels HTTP</p>
+					</section>
+					<section>
+						<h4>Single Page App</h4>
+						<p>Poids des pages augmente mais :</p>
+						<ul>
+							<li>Possibilité de faire du rendu progressif</li>
+							<li>Les débits Internet augmentent</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Quel framework ?</h3>
+						<img src="img/angular-react-vue.jpg" alt="">
+					</section>
+					<section>
+						<h4>Quel framework ?</h4>
+						<table>
+							<tr>
+								<th></th>
+								<th>VueJS</th>
+								<th>Angular</th>
+								<th>ReactJS</th>
+								<th>EmberJS</th>
+							</tr>
+							<tr>
+								<td>Courbe d'apprentissage</td>
+								<td>😃</td>
+								<td>😐</td>
+								<td>😐</td>
+								<td>😐</td>
+							</tr>
+							<tr>
+								<td>Efficacité</td>
+								<td>😃</td>
+								<td>😐</td>
+								<td>😐</td>
+								<td>😐</td>
+							</tr>
+							<tr>
+								<td>Maintenance</td>
+								<td>😐</td>
+								<td>😟</td>
+								<td>😟</td>
+								<td>😃</td>
+							</tr>
+							<tr>
+								<td>Ecosystème</td>
+								<td>😐</td>
+								<td>😃</td>
+								<td>😐</td>
+								<td>😐</td>
+							</tr>
+							<tr>
+								<td>Popularité</td>
+								<td>😐</td>
+								<td>😐</td>
+								<td>😃</td>
+								<td>😟</td>
+							</tr>
+							<tr>
+								<td>Performance</td>
+								<td>😃</td>
+								<td>😃</td>
+								<td>😃</td>
+								<td>😟</td>
+							</tr>
+							<tr>
+								<td>Niveau requis</td>
+								<td>😃</td>
+								<td>😟</td>
+								<td>😐</td>
+								<td>😐</td>
+							</tr>
+						</table>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>VueJS</h2>
+						<img src="img/logo-vue.png" alt="">
+						<br>
+						<a href="https://vuejs.org/guide/introduction.html" target="_blank">Vue.js</a>
+					</section>
+					<section>
+						<h3>VueJS</h3>
+						<ul>
+							<li>Développer rapidement des interfaces utilisateurs</li>
+							<li>Prise en main progressive : coeur simple mais bibliothèques et écosystème complets</li>
+							<li>Principe de découpage en composants réutilisables et autonomes</li>
+							<li>Très bonne documentation</li>
+						</ul>
+					</section>
+					<section>
+						<h3>VueJS</h3>
+						<p>Créé en 2014 par Evan You</p>
+						<p><strong>Open source</strong> : <a href="https://github.com/vuejs/vue" target="_blank">https://github.com/vuejs/vue</a></p>
+						<p>Utilisé par Netflix, Adobe, Alibaba et Gitlab.</p>
+					</section>
+					<section>
+						<p>Comparaison avec React :</p>
+						<ul>
+							<li>beaucoup de similitudes (dom, components)</li>
+							<li>template JSX vs Mustache</li>
+							<li>JSX + ES6 vs apprentissage rapide</li>
+							<li>React Native (applications mobiles)</li>
+						</ul>
+						<img src="img/logo-react.png" alt="">
+					</section>
+					<section>
+						<p>Comparaison avec Angular (Angular 2 et +) :</p>
+						<ul>
+							<li>VueJS inspiré d'Angular</li>
+							<li>TypeScript</li>
+							<li>complexité</li>
+							<li>stricte vs flexibilité</li>
+							<li>poids</li>
+						</ul>
+						<img src="img/logo-angular.png" alt="">
+					</section>
+					<section>
+						<h3>Première page VueJS</h3>
+
+						<p>Utilisation de VueJS en composant monofichier</p>
+						<hr>
+						3 parties dans chaque composant :
+						<br>
+						<ul>
+							<li>template (HTML)</li>
+							<li>script (logique)</li>
+							<li>style (CSS)</li>
+						</ul>
+					</section>
+					<section>
+						<h4>VueJS en composant monofichier</h4>
+						<pre><code>
+		<template>
+			< HTML />
+		</template>
+		<script>
+			JavaScript;
+		</script>
+		<style>
+			.CSS {}
+		</style>
+							</code></pre>
+					</section>
+					<section>
+						<h4>Partie Template</h4>
+						<pre class="html">
+									<code>
+		<template>
+			<input type="text" v-model="etudiant.nom">
+			<button @click="ajouter"></button>
+			{{ etudiant.nom }}
+		</template>
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h4>Partie Script</h4>
+						<pre>
+									<code>
+		<script>
+			import { reactive, ref } from 'vue';
+
+			const etudiants = ref([]);
+			const etudiant = reactive({ nom: 'John' });
+
+			const ajouter = () => {
+				etudiants.value.push(etudiant.nom);
+			};
+		</script>
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h4>Partie Style</h4>
+						S'applique uniquement sur le composant / la page
+						<pre>
+									<code>
+		<style>
+			div.figure {
+				float: right;
+				width: 30%;
+			}
+			.title {
+				color: blue;
+			}
+		</style>
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h3>Binding 2-ways</h3>
+						<p><strong>Lien</strong> entre template (affichage) et script (données).</p>
+						<p>Si l'utilisateur modifie l'affichage, la donnée est modifiée.</p>
+						<p>Si la donnée est modifiée, l'affichage se met à jour.</p>
+					</section>
+					<section>
+						<h4>Binding 2-ways</h4>
+						<p>Utilisation de Mustache</p>
+						<pre><code>
+		<div id="app">
+			{{ message }}
+		</div>
+							</code></pre>
+						<p>Utilisation de v-model</p>
+						<pre><code>
+		<div id="app">
+			<input type="text" v-model="message">
+		</div>
+							</code></pre>
+					</section>
+					<section>
+						<h3>Directives</h3>
+						<p>Attributs spécifiques à VueJS</p>
+						<p><strong>v-if</strong> permet d'afficher ou non un bloc selon l'état d'une variable</p>
+						<pre>
+									<code>
+		<p v-if="loggedIn">Hello !</p>
+		<p v-else>Please log in</p>
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h4>Directives</h4>
+						<p><strong>v-for</strong> permet d'afficher une liste d'élements</p>
+						<pre>
+									<code>
+		<ul>
+			<li v-for="movie in movies" :key="movie.id">
+				{{movie.name}} - {{movie.date}}
+			</li>
+		</ul>
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h3>Méthodes</h3>
+						<p>Fonctions contenant la logique, permettant de manipuler les données</p>
+						<pre class="javascript">
+									<code>
+		<script>
+			import { ref } from 'vue';
+
+			const nbEtudiants = ref(0);
+
+			const incrementeEtudiants = () => {
+				nbEtudiants.value++;
+			};
+		</script>
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h3>Evènements</h3>
+						<p>Actions ou interactions utilisateurs</p>
+						<p>Le plus souvent, le but va être de connecter des évènements à des méthodes.</p>
+						<p>Utilisation du mot-clé <strong>@</strong></p>
+					</section>
+					<section>
+						<h4>Evènements</h4>
+						<pre>
+									<code>
+		<template>
+			<button @click="applaudir">Applaudir</button>
+			<p>Vous avez reçu {{applaudissements}} applaudissements.</p>
+		</template>
+
+		<script>
+			import { ref } from 'vue';
+
+			const applaudissements = ref(0);
+			const applaudir = () => {
+				this.applaudissements.value++;
+			};
+		</script>
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h3>Propriétés calculées</h3>
+						<p>Pour les traitements de donnée lourds avant affichage</p>
+						<p>L'idée est d'éviter de mettre ces traitements dans le template</p>
+						<p>Utilisation du mot-clé <strong>computed</strong></p>
+					</section>
+					<section>
+						<h4>Propriétés calculées</h4>
+						<pre>
+									<code>
+		<script>
+			import { computed, ref } from 'vue';
+
+			const nbEtudiantsGroupe1 = ref(10);
+			const nbEtudiantsGoupe2 = ref(20);
+
+			const somme = computed(() =>
+					nbEtudiantsGroupe1 + nbEtudiantsGoupe2
+			);
+		</script>
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h3>Cycle de vie</h3>
+						<p>Chaque composant/page a un cycle de vie (création, monté, détruit).</p>
+						<p>Il est possible de "s'accrocher" à des moments du cycle pour effectuer des actions.</p>
+						<pre>
+									<code>
+		<script>
+		import { onMounted } from 'vue';
+
+		onMounted(() => {
+			console.log(`the component is now mounted.`);
+		});
+		</script>
+									</code>
+								</pre>
+					</section>
+				</section>
 			</div>
 		</div>
 
