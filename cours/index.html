@@ -1079,6 +1079,345 @@
 								</pre>
 					</section>
 				</section>
+
+				<!--  Cours 4  -->
+				<section>
+					<section>
+						<h2>Web Components</h2>
+					</section>
+					<section>
+						Un Composant est un morceau de page web autonome et réutilisable
+						<img src="img/template.jpg" alt="">
+					</section>
+					<section>
+						<h3>Web Custom Components</h3>
+						<p>Basé sur Custom Elements, Shadow DOM, Template, des normes HTML</p>
+					</section>
+					<section>
+						<h3>VueJS Components</h3>
+						<p>Similaire à Web Custom Components</p>
+						<p>Permet de découper l'application en plusieurs pages et chaque page en plusieurs éléments</p>
+					</section>
+					<section>
+						<h4>VueJS Components</h4>
+						<p>Avec notre approche composant monofichier, chaque fichier .vue est un composant.</p>
+						<p>Le fichier App.vue représente la page parente.</p>
+					</section>
+					<section>
+						<h4>VueJS Components</h4>
+						Exemple composant CharacterItem.vue :
+						<pre>
+									<code>
+		<template>
+			<h4>
+				{{ character.name }}
+			</h4>
+			<p>
+				Couleur des yeux : {{ character.eyeColor }}
+			</p>
+
+			<button @click="emit('deleteCharacter', character)">
+				Supprimer
+			</button>
+		</template>
+
+		<script>
+			defineProps(['character']);
+			const emit = defineEmits(['deleteCharacter']);
+		</script>
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h4>Data down, event up</h4>
+						<p>Transférer des données à un composant fils se fait via des propriétés</p>
+						<pre>
+									<code>
+		<template>
+			<h4>
+				{{ character.name }}
+			</h4>
+			<p>
+				Couleur des yeux : {{ character.eyeColor }}
+			</p>
+		</template>
+
+		<script>
+			defineProps(['character']);
+		</script>
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h4>Data down, event up</h4>
+						<p>Remonter des actions à un composant père se fait via des évènements</p>
+						<pre>
+									<code>
+		<template>
+			<button @click="emit('deleteCharacter', character)">
+				Supprimer
+			</button>
+		</template>
+
+		<script>
+			const emit = defineEmits(['deleteCharacter']);
+		</script>
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h4>VueJS Components</h4>
+						Utilisation composant :
+						<pre>
+									<code>
+		<template>
+			<CharacterItem
+					v-for="character in characters"
+					:key="character.name"
+					:character="character"
+					@deleteCharacter="deleteCharacter"
+			></CharacterItem>
+		</template>
+
+		<script>
+			import { ref } from 'vue';
+			import CharacterItem from './components/CharacterItem';
+
+			const characters = ref([
+				{ name: 'Toto', eyeColor: 'brown' },
+				{ name: 'Toto', eyeColor: 'blue' },
+			]);
+
+			const deleteCharacter = (character) => {};
+		</script>
+									</code>
+								</pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>VueJSRouter</h2>
+					</section>
+					<section>
+						<h3>Router / Routage ?</h3>
+						<p>Dans un site web classique, chaque page a une URL différente :</p>
+						<ul>
+							<li>https://amazon.fr/panier</li>
+							<li>https://amazon.fr/paiment</li>
+							<li>https://amazon.fr/article-27</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Router / Routage ?</h3>
+						<p>Dans un site SPA, tout est sur la première page. Se posent les problèmes suivants :</p>
+						<ul>
+							<li>SEO (moteurs de recherche)</li>
+							<li>Historique</li>
+							<li>Partage de liens</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Router / Routage ?</h3>
+						<p>La solution est le router qui va faire le lien entre l'url et les pages.</p>
+						<img src="img/vue-router.png" alt="">
+					</section>
+					<section>
+						<h3>vue-router</h3>
+						<p>La librairie proposée avec VueJS pour gérer les routes.</p>
+						<a href="https://router.vuejs.org" target="_blank">https://router.vuejs.org</a>
+						<br>
+						<a href="https://github.com/vuejs/router" target="_blank">https://github.com/vuejs/router</a>
+					</section>
+					<section>
+						<h3>vue-router</h3>
+						<p>Trois étapes :</p>
+						<ul>
+							<li>Définition des routes</li>
+							<li>Utilisation des routes dans les templates</li>
+							<li>Utilisation des routes dans la logique</li>
+						</ul>
+					</section>
+					<section>
+						<h3>vue-router</h3>
+						<p>Définition des routes : attacher des URLs à des composants</p>
+						<pre>
+									<code>
+		routes: [
+			{ path: '/', name: 'Home', component: Home },
+			{ path: '/race', name: 'Race', component: Race },
+			{ path: '/login', name: 'Login', component: Login }
+		]
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h3>vue-router</h3>
+						<p>Utilisation des routes dans les templates</p>
+						<pre>
+									<code>
+		<router-link to="/login">Se connecter</router-link>
+		<router-link to="/race">Course</router-link>
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h3>vue-router</h3>
+						<p>Utilisation des routes dans la logique</p>
+						<pre><code>
+		// chaine de caractère représentant un chemin
+		router.push('/login');
+
+		// route nommée
+		router.push({ name: 'Race' });
+							</code></pre>
+					</section>
+					<section>
+						<h3>vue-router</h3>
+						<p>Routes dynamiques</p>
+						<pre>
+									<code>
+		routes: [
+			{ path: '/utilisateur/:id', component: User, name: 'user' }
+		]
+
+		router.push({ name: 'user', params: { id: 123 } })
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h3>vue-router</h3>
+						<ul>
+							<li>Chaque route est liée à un composant (une page)</li>
+							<li>Chaque page peut contenir plusieurs composants</li>
+							<li>Lorsque l'utilisateur clique sur un lien de navigation, vue-router modifie la page pour afficher le nouveau composant</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>VueX</h2>
+					</section>
+					<section>
+						<h3>VueX</h3>
+						<p>
+							VueX est un gestionnaire d'état<br>
+							<a href="https://vuex.vuejs.org/" target="_blank">https://vuex.vuejs.org/</a>
+						</p>
+					</section>
+					<section>
+						<h3>VueX</h3>
+						<p>
+							Sans gestionnaire d'état, toute donnée modifiée dans un composant est difficile à partager au sein de toute l'application.
+						</p>
+					</section>
+					<section>
+						<h3>VueX</h3>
+						<img src="img/state-without-vuex.png" alt="">
+					</section>
+					<section>
+						<h3>VueX</h3>
+						<p>
+							Avec VueX, il est possible de gérer un "store" (modèle de stockage) contenant des données/états.
+						</p>
+					</section>
+					<section>
+						<h3>VueX</h3>
+						<img src="img/vuex.png" alt="">
+					</section>
+					<section>
+						<h3>VueX</h3>
+						<p>Exemples de besoins :</p>
+						<ul>
+							<li>stocker l'état connecté/déconnecté d'un utilisateur</li>
+							<li>stocker le panier d'un client</li>
+							<li>stocker préférences utilisateur</li>
+							<li>alléger les appels backend</li>
+						</ul>
+					</section>
+					<section>
+						<h3>VueX</h3>
+						<img src="img/vuex-component.png" alt="">
+					</section>
+					<section>
+						<h3>VueX - State</h3>
+						<p>L'état "state" est la liste des données à sauvegarder</p>
+						<p>Equivalent à <strong>data</strong> dans un composant</p>
+						<pre>
+									<code>
+		state: {
+			count: 0
+		},
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h3>VueX - Mutations</h3>
+						<p>Les mutations modifient les états</p>
+						<pre>
+									<code>
+		mutations: {
+			INCREMENT: function(state) {
+				state.count++;
+			},
+			DECREMENT: function(state) {
+				state.count--;
+			}
+		},
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h3>VueX - Actions</h3>
+						<p>Les actions gèrent la logique et commitent des changements d'état</p>
+						<p>Equivalent aux <strong>méthodes</strong> dans un composant</p>
+						<p>Des appels backend peuvent être effectués ici</p>
+						<pre>
+									<code>
+		actions: {
+			incrementAction: function(context) {
+				console.log('Action d\'incrémentation');
+				context.commit("INCREMENT");
+			},
+			decrementAction: function(context) {
+				console.log('Action de décrémentation');
+				context.commit("DECREMENT");
+			}
+		},
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h3>VueX - Actions</h3>
+						<p>Les actions sont appelées depuis un composant via <strong>dispatch</strong></p>
+						<pre>
+									<code>
+		store.dispatch("incrementAction");
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h3>VueX - Getters</h3>
+						<p>Les getters permettent d'accéder en lecture aux états du store</p>
+						<pre>
+									<code>
+		getters: {
+			count: function(state) {
+				return state.count;
+			}
+		}
+									</code>
+								</pre>
+						<pre>
+									<code>
+		store.getters.count;
+									</code>
+								</pre>
+					</section>
+					<section>
+						<h3>VueX</h3>
+						<img src="img/vuex-example.png" alt="">
+					</section>
+				</section>
 			</div>
 		</div>
 
