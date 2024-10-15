@@ -1418,6 +1418,122 @@
 						<img src="img/vuex-example.png" alt="">
 					</section>
 				</section>
+
+				<!--  Cours 5  -->
+				<section>
+					<section>
+						<h3>Socket.io</h3>
+						<img src="img/socket-io-logo.jpg" alt="">
+					</section>
+					<section>
+						<h3>Socket.io</h3>
+						<p>Lors de nos TP, nous avons utilisé l'architecture Client Serveur</p>
+						<p>Les appels se font de manière asynchrone et c'est toujours le Client qui déclenche la communication</p>
+					</section>
+					<section>
+						<h3>Socket.io</h3>
+						<p>Dans un système de chat, il serait intéressant d'avoir les messages en temps réel</p>
+						<p>Pourquoi ne pas utiliser un système de <strong>stream</strong> synchrone ?</p>
+					</section>
+					<section>
+						<h3>Socket.io</h3>
+						<img src="img/socket-io-schema.png" alt="">
+					</section>
+					<section>
+						<h3>Socket.io</h3>
+						<p>Quatre choses à faire :</p>
+						<ul>
+							<li>Démarrer un stream</li>
+							<li>Connecter les clients en écoute sur le stream</li>
+							<li>Émettre des évènements</li>
+							<li>Réagir aux évènements</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Socket.io</h3>
+						<p>Démarrer un stream (depuis le serveur)</p>
+						<pre class="javascript">
+							<code>
+import { Server } from 'socket.io';
+const io = new Server(server);
+
+io.on('connection', socket =>
+    console.log('Connection ' + socket.id)
+);
+                    		</code>
+						</pre>
+					</section>
+					<section>
+						<h3>Socket.io</h3>
+						<p>Connecter les clients (depuis le client)</p>
+						<pre class="javascript">
+							<code>
+import io from 'socket.io-client';
+
+const socket = io('localhost:3000');
+                    		</code>
+						</pre>
+					</section>
+					<section>
+						<h3>Socket.io</h3>
+						<p>Émettre des évènements (depuis le serveur)</p>
+						<pre class="javascript">
+							<code>
+io.emit('MESSAGE_ADDED', message);
+                    		</code>
+						</pre>
+					</section>
+					<section>
+						<h3>Socket.io</h3>
+						<p>Réagir aux évènements (depuis le client)</p>
+						<pre>
+							<code>
+socket.on('MESSAGE_ADDED', message => {
+    messages.push(message);
+});
+                    		</code>
+						</pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Conclusion</h2>
+					</section>
+					<section>
+						<h3>Les mêmes besoins...</h3>
+						<p>Tous les frameworks JavaScript ont les mêmes besoins</p>
+						<ul>
+							<li>Gestion de composants (séparation des fonctionnalités, réutilisabilité)</li>
+							<li>Gestion des routes</li>
+							<li>Gestion des états</li>
+						</ul>
+					</section>
+					<section>
+						<h3>... avec des librairies différentes ...</h3>
+						<p>Chaque framework a donc un ensemble de librairies pour répondre à ces besoins :</p>
+						<ul>
+							<li><strong>VueJS</strong> : vue-loader (natif), vue-router, vuex</li>
+							<li><strong>AngularJS</strong> : composants (natif), angular-router (natif), ngrx, akita</li>
+							<li><strong>ReactJS</strong> : composants (natif), react router (natif), redux</li>
+						</ul>
+					</section>
+					<section>
+						<h3>... mais les mêmes concepts</h3>
+						<p>Les concepts vus avec VueJS se retrouvent dans la plupart des frameworks :</p>
+						<ul>
+							<li>Composants et cycle de vie</li>
+							<li>Data down, event up</li>
+							<li>Directives</li>
+							<li>2 ways binding</li>
+						</ul>
+					</section>
+					<section>
+						<p>
+							Si vous maitrisez un framework, le passage à un autre peut être <strong>rapide</strong>.
+						</p>
+						<img src="img/yoda.gif" alt="">
+					</section>
+				</section>
 			</div>
 		</div>
 
