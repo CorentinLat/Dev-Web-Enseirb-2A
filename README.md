@@ -9,3 +9,7 @@ Le cours est disponible [ici](/cours). Il suffit d'ouvrir le fichier `index.html
 - [TP 3: PHE - Partie Client](/tps/tp3/tp3.md)
 - [TP 4: PHE - Composants et Routes](/tps/tp4/tp4.md)
 - [TP 5 : PHE - Communication et Refactoring](/tps/tp5/tp5.md)
+
+### Projet
+
+[Projet](/projet/Sujet.md)
